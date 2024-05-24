@@ -24,8 +24,8 @@ const ShowTeachers = () => {
     const { currentUser } = useSelector((state) => state.user);
 
     useEffect(() => {
-        dispatch(getAllTeachers(currentUser._id));
-    }, [currentUser._id, dispatch]);
+        dispatch(getAllTeachers(currentUser?._id));
+    }, [currentUser?._id, dispatch]);
 
     const [showPopup, setShowPopup] = useState(false);
     const [message, setMessage] = useState("");
@@ -51,7 +51,7 @@ const ShowTeachers = () => {
         setShowPopup(true)
 
         // dispatch(deleteUser(deleteID, address)).then(() => {
-        //     dispatch(getAllTeachers(currentUser._id));
+        //     dispatch(getAllTeachers(currentUser?._id));
         // });
     };
 
@@ -78,7 +78,7 @@ const ShowTeachers = () => {
         },
         {
             icon: <PersonRemoveIcon color="error" />, name: 'Delete All Teachers',
-            action: () => deleteHandler(currentUser._id, "Teachers")
+            action: () => deleteHandler(currentUser?._id, "Teachers")
         },
     ];
 

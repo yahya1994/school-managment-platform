@@ -23,7 +23,7 @@ const ShowClasses = () => {
   const { sclassesList, loading, error, getresponse } = useSelector((state) => state.sclass);
   const { currentUser } = useSelector(state => state.user)
 
-  const adminID = currentUser._id
+  const adminID = currentUser?._id
 
   useEffect(() => {
     dispatch(getAllSclasses(adminID, "Sclass"));

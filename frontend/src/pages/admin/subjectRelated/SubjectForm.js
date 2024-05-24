@@ -17,7 +17,7 @@ const SubjectForm = () => {
     const { status, currentUser, response, error } = userState;
 
     const sclassName = params.id
-    const adminID = currentUser._id
+    const adminID = currentUser?._id
     const address = "Subject"
 
     const [showPopup, setShowPopup] = useState(false);

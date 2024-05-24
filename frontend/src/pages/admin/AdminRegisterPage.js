@@ -73,9 +73,21 @@ const AdminRegisterPage = () => {
             console.log(error)
         }
     }, [status, currentUser, currentRole, navigate, error, response]);
+    const customPrimaryColor = 'red'; // Your desired primary color
 
+    const theme = createTheme({
+      components: {
+        MuiAppBar: {
+          styleOverrides: {
+            colorPrimary: {
+              backgroundColor: customPrimaryColor,
+            },
+          },
+        },
+      },
+    });
     return (
-        <ThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={theme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>

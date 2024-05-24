@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 const TeacherProfile = () => {
@@ -9,23 +9,36 @@ const TeacherProfile = () => {
   if (response) { console.log(response) }
   else if (error) { console.log(error) }
 
-  const teachSclass = currentUser.teachSclass
-  const teachSubject = currentUser.teachSubject
-  const teachSchool = currentUser.school
+  const teachSclass = currentUser?.teachSclass
+  const teachSubject = currentUser?.teachSubject
+  const teachSchool = currentUser?.school
 
   return (
-    <>
-      <ProfileCard>
-        <ProfileCardContent>
-          <ProfileText>Name: {currentUser.name}</ProfileText>
-          <ProfileText>Email: {currentUser.email}</ProfileText>
-          <ProfileText>Class: {teachSclass.sclassName}</ProfileText>
-          <ProfileText>Subject: {teachSubject.subName}</ProfileText>
-          <ProfileText>School: {teachSchool.schoolName}</ProfileText>
-        </ProfileCardContent>
-      </ProfileCard>
-    </>
-  )
+    <Card variant="outlined">
+      <CardContent>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Typography variant="h6">Profile Preview</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body1">Name: {currentUser?.name}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body1">Email: {currentUser?.email}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body1">Class: {teachSclass.sclassName}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body1">Subject: {teachSubject.subName}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body1">School: {teachSchool.schoolName}</Typography>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  );
 }
 
 export default TeacherProfile

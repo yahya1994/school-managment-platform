@@ -15,34 +15,33 @@ const Homepage = () => {
                 <Grid item xs={12} md={6}>
                     <StyledPaper elevation={3}>
                         <StyledTitle>
-                            Welcome to
+                            Bienvenue dans                            <br />
+                            le Système de Gestion
                             <br />
-                            School Management
-                            <br />
-                            System
+                            Scolaire
                         </StyledTitle>
                         <StyledText>
-                            Streamline school management, class organization, and add students and faculty.
-                            Seamlessly track attendance, assess performance, and provide feedback.
-                            Access records, view marks, and communicate effortlessly.
+                            Simplifiez la gestion scolaire, l'organisation des classes et l'ajout des élèves et du personnel.
+                            Suivez l'assiduité, évaluez les performances et fournissez des retours en toute simplicité.
+                            Accédez aux dossiers, consultez les notes et communiquez sans effort.
                         </StyledText>
                         <StyledBox>
                             <StyledLink to="/choose">
                                 <LightPurpleButton variant="contained" fullWidth>
-                                    Login
+                                    connexion
                                 </LightPurpleButton>
                             </StyledLink>
-                            <StyledLink to="/chooseasguest">
+                            {/* <StyledLink to="/chooseasguest">
                                 <Button variant="outlined" fullWidth
                                     sx={{ mt: 2, mb: 3, color: "#7f56da", borderColor: "#7f56da" }}
                                 >
                                     Login as Guest
                                 </Button>
-                            </StyledLink>
+                            </StyledLink> */}
                             <StyledText>
-                                Don't have an account?{' '}
-                                <Link to="/Adminregister" style={{color:"#550080"}}>
-                                    Sign up
+                                Vous n'avez pas de compte ? {' '}
+                                <Link to="/Adminregister" style={{ color: "#550080" }}>
+                                    Inscrivez-vous
                                 </Link>
                             </StyledText>
                         </StyledBox>

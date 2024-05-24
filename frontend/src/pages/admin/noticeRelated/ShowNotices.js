@@ -20,8 +20,8 @@ const ShowNotices = () => {
     const { currentUser } = useSelector(state => state.user)
 
     useEffect(() => {
-        dispatch(getAllNotices(currentUser._id, "Notice"));
-    }, [currentUser._id, dispatch]);
+        dispatch(getAllNotices(currentUser?._id, "Notice"));
+    }, [currentUser?._id, dispatch]);
 
     if (error) {
         console.log(error);
@@ -30,7 +30,7 @@ const ShowNotices = () => {
     const deleteHandler = (deleteID, address) => {
         dispatch(deleteUser(deleteID, address))
             .then(() => {
-                dispatch(getAllNotices(currentUser._id, "Notice"));
+                dispatch(getAllNotices(currentUser?._id, "Notice"));
             })
     }
 
@@ -68,7 +68,7 @@ const ShowNotices = () => {
         },
         {
             icon: <DeleteIcon color="error" />, name: 'Delete All Notices',
-            action: () => deleteHandler(currentUser._id, "Notices")
+            action: () => deleteHandler(currentUser?._id, "Notices")
         }
     ];
 

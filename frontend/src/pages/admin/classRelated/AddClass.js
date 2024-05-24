@@ -18,7 +18,7 @@ const AddClass = () => {
     const userState = useSelector(state => state.user);
     const { status, currentUser, response, error, tempDetails } = userState;
 
-    const adminID = currentUser._id
+    const adminID = currentUser?._id
     const address = "Sclass"
 
     const [loader, setLoader] = useState(false)

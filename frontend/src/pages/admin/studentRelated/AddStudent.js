@@ -22,7 +22,7 @@ const AddStudent = ({ situation }) => {
     const [className, setClassName] = useState('')
     const [sclassName, setSclassName] = useState('')
 
-    const adminID = currentUser._id
+    const adminID = currentUser?._id
     const role = "Student"
     const attendance = []
 

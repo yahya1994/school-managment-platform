@@ -32,8 +32,8 @@ const ShowStudents = () => {
     const { currentUser } = useSelector(state => state.user)
 
     useEffect(() => {
-        dispatch(getAllStudents(currentUser._id));
-    }, [currentUser._id, dispatch]);
+        dispatch(getAllStudents(currentUser?._id));
+    }, [currentUser?._id, dispatch]);
 
     if (error) {
         console.log(error);
@@ -50,7 +50,7 @@ const ShowStudents = () => {
 
         // dispatch(deleteUser(deleteID, address))
         //     .then(() => {
-        //         dispatch(getAllStudents(currentUser._id));
+        //         dispatch(getAllStudents(currentUser?._id));
         //     })
     }
 
@@ -180,7 +180,7 @@ const ShowStudents = () => {
         },
         {
             icon: <PersonRemoveIcon color="error" />, name: 'Delete All Students',
-            action: () => deleteHandler(currentUser._id, "Students")
+            action: () => deleteHandler(currentUser?._id, "Students")
         },
     ];
 

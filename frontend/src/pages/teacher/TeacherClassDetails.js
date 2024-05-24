@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { getClassStudents } from "../../redux/sclassRelated/sclassHandle";
 import { Paper, Box, Typography, ButtonGroup, Button, Popper, Grow, ClickAwayListener, MenuList, MenuItem } from '@mui/material';
-import { BlackButton, BlueButton} from "../../components/buttonStyles";
+import { BlackButton, BlueButton } from "../../components/buttonStyles";
 import TableTemplate from "../../components/TableTemplate";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import TableViewTemplate from "../../components/TableViewTemplate";
 
 const TeacherClassDetails = () => {
     const navigate = useNavigate()
@@ -14,8 +15,8 @@ const TeacherClassDetails = () => {
     const { sclassStudents, loading, error, getresponse } = useSelector((state) => state.sclass);
 
     const { currentUser } = useSelector((state) => state.user);
-    const classID = currentUser.teachSclass?._id
-    const subjectID = currentUser.teachSubject?._id
+    const classID = currentUser?.teachSclass?._id
+    const subjectID = currentUser?.teachSubject?._id
 
     useEffect(() => {
         dispatch(getClassStudents(classID));
@@ -39,7 +40,7 @@ const TeacherClassDetails = () => {
     })
 
     const StudentsButtonHaver = ({ row }) => {
-        const options = ['Take Attendance', 'Provide Marks'];
+        const options = ['Présence', 'note'];
 
         const [open, setOpen] = React.useState(false);
         const anchorRef = React.useRef(null);
@@ -149,7 +150,7 @@ const TeacherClassDetails = () => {
                 <div>Loading...</div>
             ) : (
                 <>
-                    <Typography variant="h4" align="center" gutterBottom>
+                    <Typography variant="h4" align="center" padding={5} gutterBottom>
                         Class Details
                     </Typography>
                     {getresponse ? (
@@ -159,7 +160,7 @@ const TeacherClassDetails = () => {
                             </Box>
                         </>
                     ) : (
-                        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+                        <Paper sx={{ width: '100%', alignSelf: 'center', paddingLeft: 5, paddingRight: 5, paddingInline: 5, overflow: 'hidden' }}>
                             <Typography variant="h5" gutterBottom>
                                 Students List:
                             </Typography>

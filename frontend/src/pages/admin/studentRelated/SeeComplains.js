@@ -13,8 +13,8 @@ const SeeComplains = () => {
   const { currentUser } = useSelector(state => state.user)
 
   useEffect(() => {
-    dispatch(getAllComplains(currentUser._id, "Complain"));
-  }, [currentUser._id, dispatch]);
+    dispatch(getAllComplains(currentUser?._id, "Complain"));
+  }, [currentUser?._id, dispatch]);
 
   if (error) {
     console.log(error);

@@ -15,7 +15,7 @@ const AddNotice = () => {
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
   const [date, setDate] = useState('');
-  const adminID = currentUser._id
+  const adminID = currentUser?._id
 
   const [loader, setLoader] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
