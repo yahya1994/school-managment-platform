@@ -20,7 +20,7 @@ const AdminHomePage = () => {
 
     const { currentUser } = useSelector(state => state.user)
 
-    const adminID = currentUser._id
+    const adminID = currentUser?._id
 
     useEffect(() => {
         dispatch(getAllStudents(adminID));
@@ -37,37 +37,37 @@ const AdminHomePage = () => {
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
+                        <StyledPaper sx={{ borderRadius: '18px' }}>
                             <img src={Students} alt="Students" />
                             <Title>
-                                Total Students
+                                  Total des etudiants
                             </Title>
                             <Data start={0} end={numberOfStudents} duration={2.5} />
                         </StyledPaper>
                     </Grid>
                     <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
+                         <StyledPaper sx={{ borderRadius: '18px' }}>
                             <img src={Classes} alt="Classes" />
                             <Title>
-                                Total Classes
+                              Total des classes
                             </Title>
                             <Data start={0} end={numberOfClasses} duration={5} />
                         </StyledPaper>
                     </Grid>
                     <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
+                         <StyledPaper sx={{ borderRadius: '18px' }}>
                             <img src={Teachers} alt="Teachers" />
                             <Title>
-                                Total Teachers
+                              Total des enseignants
                             </Title>
                             <Data start={0} end={numberOfTeachers} duration={2.5} />
                         </StyledPaper>
                     </Grid>
                     <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
+                         <StyledPaper sx={{ borderRadius: '18px' }}>
                             <img src={Fees} alt="Fees" />
                             <Title>
-                                Fees Collection
+                             Total revenue
                             </Title>
                             <Data start={0} end={23000} duration={2.5} prefix="$" />                        </StyledPaper>
                     </Grid>
@@ -91,6 +91,7 @@ const StyledPaper = styled(Paper)`
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  
 `;
 
 const Title = styled.p`

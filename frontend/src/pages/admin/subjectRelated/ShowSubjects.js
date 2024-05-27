@@ -20,8 +20,8 @@ const ShowSubjects = () => {
     const { currentUser } = useSelector(state => state.user)
 
     useEffect(() => {
-        dispatch(getSubjectList(currentUser._id, "AllSubjects"));
-    }, [currentUser._id, dispatch]);
+        dispatch(getSubjectList(currentUser?._id, "AllSubjects"));
+    }, [currentUser?._id, dispatch]);
 
     if (error) {
         console.log(error);
@@ -38,7 +38,7 @@ const ShowSubjects = () => {
 
         // dispatch(deleteUser(deleteID, address))
         //     .then(() => {
-        //         dispatch(getSubjectList(currentUser._id, "AllSubjects"));
+        //         dispatch(getSubjectList(currentUser?._id, "AllSubjects"));
         //     })
     }
 
@@ -79,7 +79,7 @@ const ShowSubjects = () => {
         },
         {
             icon: <DeleteIcon color="error" />, name: 'Delete All Subjects',
-            action: () => deleteHandler(currentUser._id, "Subjects")
+            action: () => deleteHandler(currentUser?._id, "Subjects")
         }
     ];
 

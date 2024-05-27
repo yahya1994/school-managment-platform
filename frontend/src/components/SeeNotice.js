@@ -12,10 +12,10 @@ const SeeNotice = () => {
 
     useEffect(() => {
         if (currentRole === "Admin") {
-            dispatch(getAllNotices(currentUser._id, "Notice"));
+            dispatch(getAllNotices(currentUser?._id, "Notice"));
         }
         else {
-            dispatch(getAllNotices(currentUser.school._id, "Notice"));
+            dispatch(getAllNotices(currentUser?.school._id, "Notice"));
         }
     }, [dispatch]);
 
@@ -44,10 +44,10 @@ const SeeNotice = () => {
             {loading ? (
                 <div style={{ fontSize: '20px' }}>Loading...</div>
             ) : response ? (
-                <div style={{ fontSize: '20px' }}>No Notices to Show Right Now</div>
+                <div style={{ fontSize: '20px' }}>Aucun note a afficher</div>
             ) : (
                 <>
-                    <h3 style={{ fontSize: '30px', marginBottom: '40px' }}>Notices</h3>
+                    <h3 style={{ fontSize: '30px', marginBottom: '40px' }}>Les notes</h3>
                     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                         {Array.isArray(noticesList) && noticesList.length > 0 &&
                             <TableViewTemplate columns={noticeColumns} rows={noticeRows} />

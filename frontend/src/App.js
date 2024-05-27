@@ -8,15 +8,35 @@ import TeacherDashboard from './pages/teacher/TeacherDashboard';
 import LoginPage from './pages/LoginPage';
 import AdminRegisterPage from './pages/admin/AdminRegisterPage';
 import ChooseUser from './pages/ChooseUser';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const App = () => {
   const { currentRole } = useSelector(state => state.user);
+  const defaultTheme = createTheme();
+  const customPrimaryColor = '#ff5722'; // Your desired primary color
 
+  const theme = createTheme({
+ 
+  });
+ 
   return (
+    <>   <style jsx global>{`
+    .MuiSvgIcon-root {
+      color: ${currentRole === 'Teacher' ?  "#ac4a76" :currentRole === 'Student' ? '#357b52':'#173c60' } !important;
+    }
+    .fc .fc-button-primary {
+      background-color:  ${currentRole === 'Teacher' ?  "#ac4a76" :currentRole === 'Student' ? '#357b52':'#173c60' } !important;;
+      border-color:  ${currentRole === 'Teacher' ?  "#ac4a76" :currentRole === 'Student' ? '#357b52':'#173c60' } !important;
+      color: var(--fc-button-text-color);
+  }
+  `}</style>
     <Router>
       {currentRole === null &&
         <Routes>
-          <Route path="/" element={<Homepage />} />
+     
+           <Route path="/" element={<Homepage />} />
+          {/* <Route path="/" element={<AdminDashboard />} /> */}
+
           <Route path="/choose" element={<ChooseUser visitor="normal" />} />
           <Route path="/chooseasguest" element={<ChooseUser visitor="guest" />} />
 
@@ -46,7 +66,7 @@ const App = () => {
           <TeacherDashboard />
         </>
       }
-    </Router>
+    </Router></>
   )
 }
 

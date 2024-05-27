@@ -114,9 +114,9 @@ const StudentAttendance = ({ situation }) => {
                                 <Typography variant="h4">
                                     Student Name: {userDetails.name}
                                 </Typography>
-                                {currentUser.teachSubject &&
+                                {currentUser?.teachSubject &&
                                     <Typography variant="h4">
-                                        Subject Name: {currentUser.teachSubject?.subName}
+                                        Subject Name: {currentUser?.teachSubject?.subName}
                                     </Typography>
                                 }
                             </Stack>

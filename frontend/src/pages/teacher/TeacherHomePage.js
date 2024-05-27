@@ -16,8 +16,8 @@ const TeacherHomePage = () => {
     const { currentUser } = useSelector((state) => state.user);
     const { subjectDetails, sclassStudents } = useSelector((state) => state.sclass);
 
-    const classID = currentUser.teachSclass?._id
-    const subjectID = currentUser.teachSubject?._id
+    const classID = currentUser?.teachSclass?._id
+    const subjectID = currentUser?.teachSubject?._id
 
     useEffect(() => {
         dispatch(getSubjectDetails(subjectID, "Subject"));
@@ -35,7 +35,7 @@ const TeacherHomePage = () => {
                         <StyledPaper>
                             <img src={Students} alt="Students" />
                             <Title>
-                                Class Students
+                            Élèves de la classe
                             </Title>
                             <Data start={0} end={numberOfStudents} duration={2.5} />
                         </StyledPaper>
@@ -44,7 +44,7 @@ const TeacherHomePage = () => {
                         <StyledPaper>
                             <img src={Lessons} alt="Lessons" />
                             <Title>
-                                Total Lessons
+                            Leçons totales
                             </Title>
                             <Data start={0} end={numberOfSessions} duration={5} />
                         </StyledPaper>
@@ -53,7 +53,7 @@ const TeacherHomePage = () => {
                         <StyledPaper>
                             <img src={Tests} alt="Tests" />
                             <Title>
-                                Tests Taken
+                            Tests effectués
                             </Title>
                             <Data start={0} end={24} duration={4} />
                         </StyledPaper>
@@ -62,7 +62,7 @@ const TeacherHomePage = () => {
                         <StyledPaper>
                             <img src={Time} alt="Time" />
                             <Title>
-                                Total Hours
+                            Heures totales
                             </Title>
                             <Data start={0} end={30} duration={4} suffix="hrs"/>                        </StyledPaper>
                     </Grid>

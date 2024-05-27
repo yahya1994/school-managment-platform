@@ -14,8 +14,8 @@ const ChooseClass = ({ situation }) => {
     const { currentUser } = useSelector(state => state.user)
 
     useEffect(() => {
-        dispatch(getAllSclasses(currentUser._id, "Sclass"));
-    }, [currentUser._id, dispatch]);
+        dispatch(getAllSclasses(currentUser?._id, "Sclass"));
+    }, [currentUser?._id, dispatch]);
 
     if (error) {
         console.log(error)

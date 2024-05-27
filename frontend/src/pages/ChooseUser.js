@@ -7,6 +7,7 @@ import {
   Container,
   CircularProgress,
   Backdrop,
+  Typography,
 } from '@mui/material';
 import { AccountCircle, School, Group } from '@mui/icons-material';
 import styled from 'styled-components';
@@ -85,45 +86,50 @@ const ChooseUser = ({ visitor }) => {
   return (
     <StyledContainer>
       <Container>
-        <Grid container spacing={2} justifyContent="center">
-          <Grid item xs={12} sm={6} md={4}>
-            <div onClick={() => navigateHandler("Admin")}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={6} md={6}>
+            <div  onClick={() => navigateHandler("Admin")}>
               <StyledPaper elevation={3}>
                 <Box mb={2}>
                   <AccountCircle fontSize="large" />
                 </Box>
-                <StyledTypography>
-                  Admin
-                </StyledTypography>
-                Login as an administrator to access the dashboard to manage app data.
+                <StyledTypography>Admin</StyledTypography>
+                <Typography>Connectez-vous en tant qu'administrateur pour accéder au tableau de bord et gérer les données de l'application.</Typography>
               </StyledPaper>
             </div>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <StyledPaper elevation={3}>
-              <div onClick={() => navigateHandler("Student")}>
-                <Box mb={2}>
-                  <School fontSize="large" />
-                </Box>
-                <StyledTypography>
-                  Student
-                </StyledTypography>
-                Login as a student to explore course materials and assignments.
-              </div>
-            </StyledPaper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <StyledPaper elevation={3}>
-              <div onClick={() => navigateHandler("Teacher")}>
+          <Grid item xs={12} sm={6} md={6}>
+            <div  onClick={() => navigateHandler("Student")}>
+              <StyledPaper elevation={3}>
                 <Box mb={2}>
                   <Group fontSize="large" />
                 </Box>
-                <StyledTypography>
-                  Teacher
-                </StyledTypography>
-                Login as a teacher to create courses, assignments, and track student progress.
-              </div>
-            </StyledPaper>
+                <StyledTypography>Student</StyledTypography>
+                <Typography>Connectez-vous en tant qu'étudiant pour explorer les supports de cours et les devoirs.</Typography>
+              </StyledPaper>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <div onClick={() => navigateHandler("Teacher")}>
+              <StyledPaper elevation={3}>
+                <Box mb={2}>
+                  <Group fontSize="large" />
+                </Box>
+                <StyledTypography>Teacher</StyledTypography>
+                <Typography>Connectez-vous en tant qu'enseignant pour créer des cours, des devoirs et suivre les progrès des étudiants.</Typography>
+              </StyledPaper>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <div onClick={() => navigateHandler("Parent")}>
+              <StyledPaper elevation={3}>
+                <Box mb={2}>
+                  <Group fontSize="large" />
+                </Box>
+                <StyledTypography>Parent</StyledTypography>
+                <Typography>Connectez-vous en tant que parent pour consulter le progrès des élèves et communiquer avec les enseignants.</Typography>
+              </StyledPaper>
+            </div>
           </Grid>
         </Grid>
       </Container>
@@ -142,7 +148,7 @@ const ChooseUser = ({ visitor }) => {
 export default ChooseUser;
 
 const StyledContainer = styled.div`
-  background: linear-gradient(to bottom, #411d70, #19118b);
+  background: linear-gradient(84deg, #173c60, #0f569a);
   height: 120vh;
   display: flex;
   justify-content: center;
@@ -155,10 +161,11 @@ const StyledPaper = styled(Paper)`
   background-color: #1f1f38;
   color:rgba(255, 255, 255, 0.6);
   cursor:pointer;
+  min-height:180px;
 
   &:hover {
-    background-color: #2c2c6c;
-    color:white;
+    background-color: white;
+    color: #173c60;
   }
 `;
 
