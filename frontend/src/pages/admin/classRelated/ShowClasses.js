@@ -70,7 +70,7 @@ const ShowClasses = () => {
         </IconButton>
         <BlueButton variant="contained"
           onClick={() => navigate("/Admin/classes/class/" + row.id)}>
-          View
+          Consulter
         </BlueButton>
         <ActionMenu actions={actions} />
       </ButtonContainer>

@@ -62,7 +62,7 @@ const ViewSubject = () => {
           variant="contained"
           onClick={() => navigate("/Admin/students/student/" + row.id)}
         >
-          View
+          Consulter
         </BlueButton>
         <PurpleButton
           variant="contained"
@@ -70,7 +70,7 @@ const ViewSubject = () => {
             navigate(`/Admin/subject/student/attendance/${row.id}/${subjectID}`)
           }
         >
-          Take Attendance
+          marquer présence
         </PurpleButton>
       </>
     );
@@ -83,7 +83,7 @@ const ViewSubject = () => {
           variant="contained"
           onClick={() => navigate("/Admin/students/student/" + row.id)}
         >
-          View
+          Consulter
         </BlueButton>
         <PurpleButton variant="contained"
           onClick={() => navigate(`/Admin/subject/student/marks/${row.id}/${subjectID}`)}>
@@ -110,7 +110,7 @@ const ViewSubject = () => {
         ) : (
           <>
             <Typography variant="h5" gutterBottom>
-              Students List:
+              Liste des etudiants: 
             </Typography>
 
             {selectedSection === 'attendance' &&
@@ -123,7 +123,7 @@ const ViewSubject = () => {
             <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
               <BottomNavigation value={selectedSection} onChange={handleSectionChange} showLabels>
                 <BottomNavigationAction
-                  label="Attendance"
+                  label="Présence"
                   value="attendance"
                   icon={selectedSection === 'attendance' ? <TableChartIcon /> : <TableChartOutlinedIcon />}
                 />

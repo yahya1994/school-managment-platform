@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Tooltip } from '@mui/material';
 import { Settings, Logout } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { authLogout } from '../redux/userRelated/userSlice';
 
 const AccountMenu = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -10,7 +11,13 @@ const AccountMenu = () => {
     const open = Boolean(anchorEl);
 
     const { currentRole, currentUser } = useSelector(state => state.user);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
+    const handleLogout = () => {
+        dispatch(authLogout());
+        navigate('/');
+    };
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -55,17 +62,12 @@ const AccountMenu = () => {
                     </Link>
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
-                        <Settings fontSize="small" />
-                    </ListItemIcon>
-                    Settings
-                </MenuItem>
+   
                 <MenuItem>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
-                    <Link to="/logout">
+                    <Link onClick={handleLogout }>
                         Logout
                     </Link>
                 </MenuItem>

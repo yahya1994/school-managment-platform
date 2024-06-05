@@ -18,7 +18,7 @@ const TeacherProfile = () => {
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography variant="h6">Profile Preview</Typography>
+            <Typography variant="h6">Profile  </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body1">Name: {currentUser?.name}</Typography>

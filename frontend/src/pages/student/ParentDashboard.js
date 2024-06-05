@@ -20,9 +20,10 @@ import StudentComplain from './StudentComplain';
 import Logout from '../Logout'
 import AccountMenu from '../../components/AccountMenu';
 import { AppBar, Drawer } from '../../components/styles';
+import ParentSideBar from './ParentSideBar';
 import StudentCallendar from '../teacher/StudentCallendar';
 
-const StudentDashboard = () => {
+const ParentDashboard = () => {
     const [open, setOpen] = useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
@@ -54,7 +55,7 @@ const StudentDashboard = () => {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Student Dashboard
+                            Dashboard parent
                         </Typography>
                         <AccountMenu />
                     </Toolbar>
@@ -68,7 +69,7 @@ const StudentDashboard = () => {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        <StudentSideBar />
+                        <ParentSideBar />
                     </List>
                 </Drawer>
                 <Box component="main" sx={styles.boxStyled}>
@@ -92,7 +93,7 @@ const StudentDashboard = () => {
     );
 }
 
-export default StudentDashboard
+export default ParentDashboard
 
 const styles = {
     boxStyled: {

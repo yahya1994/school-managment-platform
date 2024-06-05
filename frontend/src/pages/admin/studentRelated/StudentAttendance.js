@@ -47,7 +47,7 @@ const StudentAttendance = ({ situation }) => {
 
     useEffect(() => {
         if (userDetails && userDetails.sclassName && situation === "Student") {
-            dispatch(getSubjectList(userDetails.sclassName._id, "ClassSubjects"));
+            dispatch(getSubjectList(userDetails.sclassName?._id, "ClassSubjects"));
         }
     }, [dispatch, userDetails]);
 
@@ -141,14 +141,14 @@ const StudentAttendance = ({ situation }) => {
                                                     ))
                                                     :
                                                     <MenuItem value="Select Subject">
-                                                        Add Subjects For Attendance
+                                                       Ajouter des sujets de participation
                                                     </MenuItem>
                                                 }
                                             </Select>
                                         </FormControl>
                                     }
                                     <FormControl fullWidth>
-                                        <InputLabel id="demo-simple-select-label">Attendance Status</InputLabel>
+                                        <InputLabel id="demo-simple-select-label">présence Status</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"

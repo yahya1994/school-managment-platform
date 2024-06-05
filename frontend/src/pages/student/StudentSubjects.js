@@ -29,15 +29,13 @@ const StudentSubjects = () => {
 
     useEffect(() => {
         if (userDetails) {
-            setSubjectMarks(userDetails.examResult || []);
+            setSubjectMarks(userDetails?.examResult || []);
         }
     }, [userDetails])
 
     useEffect(() => {
-        if (subjectMarks === []) {
-            dispatch(getSubjectList(currentUser?.sclassName._id, "ClassSubjects"));
-        }
-    }, [subjectMarks, dispatch, currentUser?.sclassName._id]);
+        dispatch(getSubjectList(currentUser?.sclassName?._id, "ClassSubjects"));
+    }, [subjectMarks, dispatch, currentUser?.sclassName?._id]);
 
     const handleSectionChange = (event, newSection) => {
         setSelectedSection(newSection);
@@ -82,13 +80,13 @@ const StudentSubjects = () => {
         return (
             <Container>
                 <Typography variant="h4" align="center" gutterBottom>
-                    Class Details
+                    Détails de classe
                 </Typography>
                 <Typography variant="h5" gutterBottom>
-                    You are currently in Class {sclassDetails && sclassDetails.sclassName}
+                    Vous êtes actuellement en classe{sclassDetails && sclassDetails.sclassName}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                    And these are the subjects:
+                    Et voici les sujets :
                 </Typography>
                 {subjectsList &&
                     subjectsList.map((subject, index) => (

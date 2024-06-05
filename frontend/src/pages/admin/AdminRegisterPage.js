@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Box, Typography, Paper, Checkbox, FormControlLabel, TextField, CssBaseline, IconButton, InputAdornment, CircularProgress} from '@mui/material';
+import { Grid, Box, Typography, Paper, Checkbox, FormControlLabel, TextField, CssBaseline, IconButton, InputAdornment, CircularProgress } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import bgpic from "../../assets/designlogin.jpg"
@@ -76,15 +76,15 @@ const AdminRegisterPage = () => {
     const customPrimaryColor = 'red'; // Your desired primary color
 
     const theme = createTheme({
-      components: {
-        MuiAppBar: {
-          styleOverrides: {
-            colorPrimary: {
-              backgroundColor: customPrimaryColor,
+        components: {
+            MuiAppBar: {
+                styleOverrides: {
+                    colorPrimary: {
+                        backgroundColor: customPrimaryColor,
+                    },
+                },
             },
-          },
         },
-      },
     });
     return (
         <ThemeProvider theme={theme}>
@@ -104,10 +104,10 @@ const AdminRegisterPage = () => {
                             Admin Register
                         </Typography>
                         <Typography variant="h7">
-                            Create your own school by registering as an admin.
+                            Créez votre propre école en vous inscrivant en tant qu’administratrice.
                             <br />
-                            You will be able to add students and faculty and
-                            manage the system.
+                            Vous pourrez ajouter des étudiants et des professeurs et
+                            gérer le système.
                         </Typography>
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
                             <TextField
@@ -185,7 +185,7 @@ const AdminRegisterPage = () => {
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
                             >
-                                {loader ? <CircularProgress size={24} color="inherit"/> : "Register"}
+                                {loader ? <CircularProgress size={24} color="inherit" /> : "Register"}
                             </LightPurpleButton>
                             <Grid container>
                                 <Grid>

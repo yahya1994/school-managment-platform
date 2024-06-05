@@ -19,14 +19,14 @@ const StudentHomePage = () => {
 
     const [subjectAttendance, setSubjectAttendance] = useState([]);
 
-    const classID = currentUser?.sclassName._id
+    const classID = currentUser?.sclassName?._id
 
     useEffect(() => {
         dispatch(getUserDetails(currentUser?._id, "Student"));
         dispatch(getSubjectList(classID, "ClassSubjects"));
     }, [dispatch, currentUser?._id, classID]);
 
-    const numberOfSubjects = subjectsList && subjectsList.length;
+    const numberOfSubjects = subjectsList && subjectsList?.length;
 
     useEffect(() => {
         if (userDetails) {
@@ -67,7 +67,7 @@ const StudentHomePage = () => {
                         <ChartContainer>
                             {
                                 response ?
-                                    <Typography variant="h6">No Attendance Found</Typography>
+                                    <Typography variant="h6">Aucun présence trouvé</Typography>
                                     :
                                     <>
                                         {loading
@@ -83,7 +83,7 @@ const StudentHomePage = () => {
                                                         </>
                                                     )
                                                         :
-                                                        <Typography variant="h6">No Attendance Found</Typography>
+                                                        <Typography variant="h6">Aucun présence trouvé</Typography>
                                                 }
                                             </>
                                         }

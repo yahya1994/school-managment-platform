@@ -31,24 +31,11 @@ const StudentProfile = () => {
                 </Typography>
               </Box>
             </Grid>
+
             <Grid item xs={12}>
               <Box display="flex" justifyContent="center">
                 <Typography variant="subtitle1" component="p" textAlign="center">
-                  Student Roll No: {currentUser?.rollNum}
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box display="flex" justifyContent="center">
-                <Typography variant="subtitle1" component="p" textAlign="center">
-                  Class: {sclassName.sclassName}
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box display="flex" justifyContent="center">
-                <Typography variant="subtitle1" component="p" textAlign="center">
-                  School: {studentSchool.schoolName}
+                  Ecole {studentSchool.schoolName}
                 </Typography>
               </Box>
             </Grid>
@@ -57,12 +44,12 @@ const StudentProfile = () => {
         <Card>
           <CardContent>
             <Typography variant="h6" gutterBottom>
-              Personal Information
+            Information personelle
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <Typography variant="subtitle1" component="p">
-                  <strong>Date of Birth:</strong> January 1, 2000
+                  <strong>Date de naissance:</strong> January 1, 2000
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -82,12 +69,12 @@ const StudentProfile = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Typography variant="subtitle1" component="p">
-                  <strong>Address:</strong> 123 Main Street, City, Country
+                  <strong>Addresse:</strong> 123 Main Street, City, Country
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Typography variant="subtitle1" component="p">
-                  <strong>Emergency Contact:</strong> (987) 654-3210
+                  <strong>Contact d’urgence:</strong> (987) 654-3210
                 </Typography>
               </Grid>
             </Grid>

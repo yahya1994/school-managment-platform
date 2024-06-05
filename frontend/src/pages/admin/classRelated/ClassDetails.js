@@ -84,7 +84,7 @@ const ClassDetails = () => {
                         navigate(`/Admin/class/subject/${classID}/${row.id}`)
                     }}
                 >
-                    View
+                    Consulter
                 </BlueButton >
             </>
         );
@@ -150,7 +150,7 @@ const ClassDetails = () => {
                     variant="contained"
                     onClick={() => navigate("/Admin/students/student/" + row.id)}
                 >
-                    View
+                    Consulter
                 </BlueButton>
                 <PurpleButton
                     variant="contained"
@@ -158,7 +158,7 @@ const ClassDetails = () => {
                         navigate("/Admin/students/student/attendance/" + row.id)
                     }
                 >
-                    Attendance
+                    Présence
                 </PurpleButton>
             </>
         );
@@ -192,7 +192,7 @@ const ClassDetails = () => {
                 ) : (
                     <>
                         <Typography variant="h5" gutterBottom>
-                            Students List:
+                            Liste des etudiants:
                         </Typography>
 
                         <TableTemplate buttonHaver={StudentsButtonHaver} columns={studentColumns} rows={studentRows} />
@@ -218,16 +218,16 @@ const ClassDetails = () => {
         return (
             <>
                 <Typography variant="h4" align="center" gutterBottom>
-                    Class Details
+                    Détails de classe
                 </Typography>
                 <Typography variant="h5" gutterBottom>
-                    This is Class {sclassDetails && sclassDetails.sclassName}
+                    Class {sclassDetails && sclassDetails.sclassName}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                    Number of Subjects: {numberOfSubjects}
+                    Nombre des chapitres: {numberOfSubjects}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                    Number of Students: {numberOfStudents}
+                    Nombre des etudiants: {numberOfStudents}
                 </Typography>
                 {getresponse &&
                     <GreenButton

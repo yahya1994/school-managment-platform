@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
+import { Collapse, Divider, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -8,10 +8,12 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
 import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import { useSelector } from 'react-redux';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 const TeacherSideBar = () => {
     const { currentUser } = useSelector((state) => state.user);
     const sclassName = currentUser?.teachSclass
+    const [IsOpen, setIsOpen] = React.useState(false);
 
     const location = useLocation();
     return (
@@ -24,12 +26,24 @@ const TeacherSideBar = () => {
                     </ListItemIcon>
                     <ListItemText primary="Accueil" />
                 </ListItemButton>
-                <ListItemButton component={Link} to="/Teacher/class">
+                <ListItemButton onClick={() => setIsOpen(!IsOpen)}>
                     <ListItemIcon>
-                        <ClassOutlinedIcon color={location.pathname.startsWith("/Teacher/class") ? 'primary' : 'inherit'} />
+                        <ClassOutlinedIcon color={IsOpen ? 'primary' : 'inherit'} />
                     </ListItemIcon>
-                    <ListItemText primary={`Classe ${sclassName?.sclassName}`} />
+                    <ListItemText primary={`Classes`} />
+                    {IsOpen ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
+                <Collapse in={IsOpen} timeout="auto" unmountOnExit>
+                    <ListItemButton component={Link} to="/Teacher/class">
+                        <ListItemButton component={Link} to="/Teacher/class">
+                            <ListItemIcon>
+                            </ListItemIcon>
+                            <ListItemText primary={`Classe ${sclassName?.sclassName}`} />
+                        </ListItemButton>
+                    </ListItemButton>
+                    {/* You can add more list items here */}
+                </Collapse>
+
                 <ListItemButton component={Link} to="/Teacher/complain">
                     <ListItemIcon>
                         <AnnouncementOutlinedIcon color={location.pathname.startsWith("/Teacher/complain") ? 'primary' : 'inherit'} />

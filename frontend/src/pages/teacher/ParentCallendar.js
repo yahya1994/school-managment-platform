@@ -23,7 +23,7 @@ import "./custom.css";
 // import "./styles.css";
 
 
-const TeacherCallendar = () => {
+const ParentCallendar = () => {
   let todayStr = new Date().toISOString().replace(/T.*$/, "");
   const navigate = useNavigate()
 
@@ -177,10 +177,10 @@ const TeacherCallendar = () => {
                 locale={'fr'}
 
                 initialView="timeGridWeek"
-                editable={true}
-                selectable={true}
-                selectMirror={true}
-                dayMaxEvents={true}
+                editable={false}
+                selectable={false}
+                selectMirror={false}
+                dayMaxEvents={false}
                 weekends={weekendsVisible}
                 initialEvents={[
                   {
@@ -267,30 +267,33 @@ const TeacherCallendar = () => {
                     end: "2024-06-04 22:00:01",
                   },
                 ]}
-                select={handleDateSelect}
-                eventContent={renderEventContent}
+                // select={handleDateSelect}
+                // eventContent={renderEventContent}
                 eventClick={() => { navigate('/Teacher/class') }}
-
-                eventsSet={() => handleEvents(events)}
-                eventDrop={handleEventDrop}
-                eventResize={handleEventResize}
-                dateClick={(handleDateClick)}
-                eventAdd={(e) => {
-                  console.log("eventAdd", e);
-                }}
-                eventChange={(e) => {
-                  console.log("eventChange", e);
-                }}
-                eventRemove={(e) => {
-                  console.log("eventRemove", e);
-                }}
+              // editable={TRUE}
+              // selectable={TRUE}
+              // selectMirror={TRUE}
+              // dayMaxEvents={TRUE}
+              // eventsSet={() => handleEvents(events)}
+              // eventDrop={handleEventDrop}
+              // eventResize={handleEventResize}
+              // dateClick={(handleDateClick)}
+              // eventAdd={(e) => {
+              //   console.log("eventAdd", e);
+              // }}
+              // eventChange={(e) => {
+              //   console.log("eventChange", e);
+              // }}
+              // eventRemove={(e) => {
+              //   console.log("eventRemove", e);
+              // }}
               />
             </Grid>
           </Grid>
         </Container>
       </Card>
       <CustomModal
-        title={state.state === "update" ? "modifier l'evenement creé" : "Ajouter un nouveau evenement"}
+        title={state.state === "update" ? "modifier" : "Ajouter"}
         isOpen={modal}
         toggle={handleCloseModal}
         onCancel={handleCloseModal}
@@ -306,7 +309,13 @@ const TeacherCallendar = () => {
           onChange={(e) => setTitle(e.target.value)}
           margin="normal"
         />
-
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          // value={subjectName}
+          label="Choose an option"
+        // onChange={changeHandler}  
+        ></Select>
         <DateRangePicker
           initialSettings={{
             locale: {
@@ -337,7 +346,7 @@ const TeacherCallendar = () => {
     </div>
   );
 }
-export default TeacherCallendar
+export default ParentCallendar
 
 
 

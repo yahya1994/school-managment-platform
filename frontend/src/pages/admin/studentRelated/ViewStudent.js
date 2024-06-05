@@ -36,8 +36,8 @@ const ViewStudent = () => {
     }, [dispatch, studentID])
 
     useEffect(() => {
-        if (userDetails && userDetails.sclassName && userDetails.sclassName._id !== undefined) {
-            dispatch(getSubjectList(userDetails.sclassName._id, "ClassSubjects"));
+        if (userDetails && userDetails.sclassName && userDetails.sclassName?._id !== undefined) {
+            dispatch(getSubjectList(userDetails.sclassName?._id, "ClassSubjects"));
         }
     }, [dispatch, userDetails]);
 
@@ -147,14 +147,14 @@ const ViewStudent = () => {
         const renderTableSection = () => {
             return (
                 <>
-                    <h3>Attendance:</h3>
+                    <h3>Présence:</h3>
                     <Table>
                         <TableHead>
                             <StyledTableRow>
                                 <StyledTableCell>Subject</StyledTableCell>
                                 <StyledTableCell>Present</StyledTableCell>
                                 <StyledTableCell>Total Sessions</StyledTableCell>
-                                <StyledTableCell>Attendance Percentage</StyledTableCell>
+                                <StyledTableCell>Pourcentage de présence</StyledTableCell>
                                 <StyledTableCell align="center">Actions</StyledTableCell>
                             </StyledTableRow>
                         </TableHead>
@@ -186,7 +186,7 @@ const ViewStudent = () => {
                                             <Collapse in={openStates[subId]} timeout="auto" unmountOnExit>
                                                 <Box sx={{ margin: 1 }}>
                                                     <Typography variant="h6" gutterBottom component="div">
-                                                        Attendance Details
+                                                        Présence Details
                                                     </Typography>
                                                     <Table size="small" aria-label="purchases">
                                                         <TableHead>
@@ -220,11 +220,11 @@ const ViewStudent = () => {
                         )}
                     </Table>
                     <div>
-                        Overall Attendance Percentage: {overallAttendancePercentage.toFixed(2)}%
+                        Pourcentage global de participation : {overallAttendancePercentage.toFixed(2)}%
                     </div>
                     <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={() => removeHandler(studentID, "RemoveStudentAtten")}>Delete All</Button>
                     <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/attendance/" + studentID)}>
-                        Add Attendance
+                        Présence
                     </Button>
                 </>
             )
@@ -261,7 +261,7 @@ const ViewStudent = () => {
                     </>
                     :
                     <Button variant="contained" sx={styles.styledButton} onClick={() => navigate("/Admin/students/student/attendance/" + studentID)}>
-                        Add Attendance
+                        Ajouter Présence
                     </Button>
                 }
             </>
@@ -348,7 +348,7 @@ const ViewStudent = () => {
                 <br />
                 Class: {sclassName.sclassName}
                 <br />
-                School: {studentSchool.schoolName}
+                Ecole {studentSchool.schoolName}
                 {
                     subjectAttendance && Array.isArray(subjectAttendance) && subjectAttendance.length > 0 && (
                         <CustomPieChart data={chartData} />
@@ -410,8 +410,8 @@ const ViewStudent = () => {
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                 <TabList onChange={handleChange} sx={{ position: 'fixed', width: '100%', bgcolor: 'background.paper', zIndex: 1 }}>
                                     <Tab label="Details" value="1" />
-                                    <Tab label="Attendance" value="2" />
-                                    <Tab label="Marks" value="3" />
+                                    <Tab label="Présence" value="2" />
+                                    <Tab label="notes" value="3" />
                                 </TabList>
                             </Box>
                             <Container sx={{ marginTop: "3rem", marginBottom: "4rem" }}>

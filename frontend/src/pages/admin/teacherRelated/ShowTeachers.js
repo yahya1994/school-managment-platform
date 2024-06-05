@@ -138,7 +138,7 @@ const ShowTeachers = () => {
                                             </IconButton>
                                             <BlueButton variant="contained"
                                                 onClick={() => navigate("/Admin/teachers/teacher/" + row.id)}>
-                                                View
+                                                Consulter
                                             </BlueButton>
                                         </StyledTableCell>
                                     </StyledTableRow>

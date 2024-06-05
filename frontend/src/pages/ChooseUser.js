@@ -60,7 +60,17 @@ const ChooseUser = ({ visitor }) => {
         dispatch(loginUser(fields, user))
       }
       else {
-        navigate('/Teacherlogin');
+        navigate('/ParentLogin');
+      }
+    } else if (user === "Parent") {
+      if (visitor === "guest") {
+        const email = "tony@12"
+        const fields = { email, password }
+        setLoader(true)
+        dispatch(loginUser(fields, user))
+      }
+      else {
+        navigate('/ParentLogin');
       }
     }
   }
@@ -88,7 +98,7 @@ const ChooseUser = ({ visitor }) => {
       <Container>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={6}>
-            <div  onClick={() => navigateHandler("Admin")}>
+            <div onClick={() => navigateHandler("Admin")}>
               <StyledPaper elevation={3}>
                 <Box mb={2}>
                   <AccountCircle fontSize="large" />
@@ -99,7 +109,7 @@ const ChooseUser = ({ visitor }) => {
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
-            <div  onClick={() => navigateHandler("Student")}>
+            <div onClick={() => navigateHandler("Student")}>
               <StyledPaper elevation={3}>
                 <Box mb={2}>
                   <Group fontSize="large" />

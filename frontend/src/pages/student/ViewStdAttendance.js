@@ -65,15 +65,15 @@ const ViewStdAttendance = () => {
         return (
             <>
                 <Typography variant="h4" align="center" gutterBottom>
-                    Attendance
+                    Présence
                 </Typography>
                 <Table>
                     <TableHead>
                         <StyledTableRow>
                             <StyledTableCell>Subject</StyledTableCell>
                             <StyledTableCell>Present</StyledTableCell>
-                            <StyledTableCell>Total Sessions</StyledTableCell>
-                            <StyledTableCell>Attendance Percentage</StyledTableCell>
+                            <StyledTableCell>Sessions Total </StyledTableCell>
+                            <StyledTableCell>Pourcentage de présence</StyledTableCell>
                             <StyledTableCell align="center">Actions</StyledTableCell>
                         </StyledTableRow>
                     </TableHead>
@@ -99,7 +99,7 @@ const ViewStdAttendance = () => {
                                         <Collapse in={openStates[subId]} timeout="auto" unmountOnExit>
                                             <Box sx={{ margin: 1 }}>
                                                 <Typography variant="h6" gutterBottom component="div">
-                                                    Attendance Details
+                                                    Details de présence
                                                 </Typography>
                                                 <Table size="small" aria-label="purchases">
                                                     <TableHead>
@@ -133,7 +133,7 @@ const ViewStdAttendance = () => {
                     )}
                 </Table>
                 <div>
-                    Overall Attendance Percentage: {overallAttendancePercentage.toFixed(2)}%
+                    moyenne de présence en Pourcentage: {overallAttendancePercentage.toFixed(2)}%
                 </div>
             </>
         )
@@ -178,7 +178,7 @@ const ViewStdAttendance = () => {
                         :
                         <>
                             <Typography variant="h6" gutterBottom component="div">
-                                Currently You Have No Attendance Details
+                                pour le moment vous n'avez aucun details pour le présence
                             </Typography>
                         </>
                     }

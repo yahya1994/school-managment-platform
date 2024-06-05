@@ -70,7 +70,7 @@ const ShowStudents = () => {
     })
 
     const StudentButtonHaver = ({ row }) => {
-        const options = ['Take Attendance', 'Provide Marks'];
+        const options = ['Prendre les présences', 'Fournir des marques'];
 
         const [open, setOpen] = React.useState(false);
         const anchorRef = React.useRef(null);
@@ -115,7 +115,7 @@ const ShowStudents = () => {
                 </IconButton>
                 <BlueButton variant="contained"
                     onClick={() => navigate("/Admin/students/student/" + row.id)}>
-                    View
+                    Consulter
                 </BlueButton>
                 <React.Fragment>
                     <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">

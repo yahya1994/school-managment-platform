@@ -38,13 +38,13 @@ const LoginPage = ({ role }) => {
             const studentName = event.target.studentName.value;
             const password = event.target.password.value;
 
-            if (!rollNum || !studentName || !password) {
-                if (!rollNum) setRollNumberError(true);
+            if (!studentName || !password) {
+                // if (!rollNum) setRollNumberError(true);
                 if (!studentName) setStudentNameError(true);
                 if (!password) setPasswordError(true);
                 return;
             }
-            const fields = { rollNum, studentName, password }
+            const fields = { rollNum: 3, studentName, password }
             setLoader(true)
             dispatch(loginUser(fields, role))
         }
@@ -73,29 +73,7 @@ const LoginPage = ({ role }) => {
         if (name === 'studentName') setStudentNameError(false);
     };
 
-    const guestModeHandler = () => {
-        const password = "zxc"
 
-        if (role === "Admin") {
-            const email = "yogendra@12"
-            const fields = { email, password }
-            setGuestLoader(true)
-            dispatch(loginUser(fields, role))
-        }
-        else if (role === "Student") {
-            const rollNum = "1"
-            const studentName = "Dipesh Awasthi"
-            const fields = { rollNum, studentName, password }
-            setGuestLoader(true)
-            dispatch(loginUser(fields, role))
-        }
-        else if (role === "Teacher") {
-            const email = "tony@12"
-            const fields = { email, password }
-            setGuestLoader(true)
-            dispatch(loginUser(fields, role))
-        }
-    }
 
     useEffect(() => {
         //faza
@@ -108,6 +86,8 @@ const LoginPage = ({ role }) => {
                 navigate('/Student/dashboard');
             } else if (currentRole === 'Teacher') {
                 navigate('/Teacher/dashboard');
+            } else if (currentRole === 'Parent') {
+                navigate('/Parent/dashboard');
             }
         }
         else if (status === 'failed') {
@@ -153,7 +133,7 @@ const LoginPage = ({ role }) => {
                                         required
                                         fullWidth
                                         id="rollNumber"
-                                        label="Entrer adresse e-mail"
+                                        label="Enter your Roll Number"
                                         name="rollNumber"
                                         autoComplete="off"
                                         type="number"
@@ -167,7 +147,7 @@ const LoginPage = ({ role }) => {
                                         required
                                         fullWidth
                                         id="studentName"
-                                        label="Entrer nom"
+                                        label="Enter your name"
                                         name="studentName"
                                         autoComplete="name"
                                         autoFocus

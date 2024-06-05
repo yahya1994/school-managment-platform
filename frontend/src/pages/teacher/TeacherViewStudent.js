@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails } from '../../redux/userRelated/userHandle';
 import { useNavigate, useParams } from 'react-router-dom'
-import { Box, Button, Collapse, Table, TableBody, TableHead, Typography } from '@mui/material';
+import { Box, Button, Card, Collapse, Table, TableBody, TableHead, Typography } from '@mui/material';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import { calculateOverallAttendancePercentage, calculateSubjectAttendancePercentage, groupAttendanceBySubject } from '../../components/attendanceCalculator';
 import CustomPieChart from '../../components/CustomPieChart'
 import { PurpleButton } from '../../components/buttonStyles';
 import { StyledTableCell, StyledTableRow } from '../../components/styles';
+
 
 const TeacherViewStudent = () => {
 
@@ -68,16 +69,22 @@ const TeacherViewStudent = () => {
                 </>
                 :
                 <div>
-                    Name: {userDetails.name}
-                    <br />
-                    Roll Number: {userDetails.rollNum}
-                    <br />
-                    Class: {sclassName.sclassName}
-                    <br />
-                    School: {studentSchool.schoolName}
-                    <br /><br />
 
-                    <h3>Attendance:</h3>
+                    <Card style={{ padding: 15, justifyContent: 'space-between', display: 'flex' }}>
+
+                        <span style={{ fontSize: 16, fontWeight: 500 }}> Nom: {userDetails.name} <br />
+                            Classe: {sclassName.sclassName}
+                            <br />
+                        </span>
+
+
+                        Ecole {studentSchool.schoolName}
+                        <br /><br />
+                    </Card>
+                    <div style={{ height: 20 }}></div>
+                    <Card style={{ padding: 20 }}>
+                        <h3>Présence:</h3>
+                    </Card>
                     {subjectAttendance && Array.isArray(subjectAttendance) && subjectAttendance.length > 0
                         &&
                         <>
@@ -92,7 +99,7 @@ const TeacherViewStudent = () => {
                                                     <StyledTableCell>Subject</StyledTableCell>
                                                     <StyledTableCell>Present</StyledTableCell>
                                                     <StyledTableCell>Total Sessions</StyledTableCell>
-                                                    <StyledTableCell>Attendance Percentage</StyledTableCell>
+                                                    <StyledTableCell>Pourcentage de présence</StyledTableCell>
                                                     <StyledTableCell align="center">Actions</StyledTableCell>
                                                 </StyledTableRow>
                                             </TableHead>
@@ -114,7 +121,7 @@ const TeacherViewStudent = () => {
                                                         <Collapse in={openStates[subId]} timeout="auto" unmountOnExit>
                                                             <Box sx={{ margin: 1 }}>
                                                                 <Typography variant="h6" gutterBottom component="div">
-                                                                    Attendance Details
+                                                                    détails présence
                                                                 </Typography>
                                                                 <Table size="small" aria-label="purchases">
                                                                     <TableHead>
@@ -151,7 +158,7 @@ const TeacherViewStudent = () => {
                                 }
                             })}
                             <div>
-                                Overall Attendance Percentage: {overallAttendancePercentage.toFixed(2)}%
+                                Pourcentage de présence: {overallAttendancePercentage.toFixed(2)}%
                             </div>
 
                             <CustomPieChart data={chartData} />
@@ -166,10 +173,10 @@ const TeacherViewStudent = () => {
                             )
                         }
                     >
-                        Add Attendance
+                        Ajouter présence
                     </Button>
                     <br /><br /><br />
-                    <h3>Subject Marks:</h3>
+                    <h3>Notes sur le sujet :</h3>
 
                     {subjectMarks && Array.isArray(subjectMarks) && subjectMarks.length > 0 &&
                         <>

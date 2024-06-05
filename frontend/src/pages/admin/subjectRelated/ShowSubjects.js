@@ -53,7 +53,7 @@ const ShowSubjects = () => {
             subName: subject.subName,
             sessions: subject.sessions,
             sclassName: subject.sclassName.sclassName,
-            sclassID: subject.sclassName._id,
+            sclassID: subject.sclassName?._id,
             id: subject._id,
         };
     })
@@ -66,7 +66,7 @@ const ShowSubjects = () => {
                 </IconButton>
                 <BlueButton variant="contained"
                     onClick={() => navigate(`/Admin/subjects/subject/${row.sclassID}/${row.id}`)}>
-                    View
+                    Consulter
                 </BlueButton>
             </>
         );

@@ -40,7 +40,7 @@ const TeacherClassDetails = () => {
     })
 
     const StudentsButtonHaver = ({ row }) => {
-        const options = ['Présence', 'note'];
+        const options = ['Présence', 'Note'];
 
         const [open, setOpen] = React.useState(false);
         const anchorRef = React.useRef(null);
@@ -86,7 +86,7 @@ const TeacherClassDetails = () => {
                         navigate("/Teacher/class/student/" + row.id)
                     }
                 >
-                    View
+                    Consulter
                 </BlueButton>
                 <React.Fragment>
                     <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
@@ -151,7 +151,7 @@ const TeacherClassDetails = () => {
             ) : (
                 <>
                     <Typography variant="h4" align="center" padding={5} gutterBottom>
-                        Class Details
+                        Détails de classe
                     </Typography>
                     {getresponse ? (
                         <>
@@ -162,7 +162,7 @@ const TeacherClassDetails = () => {
                     ) : (
                         <Paper sx={{ width: '100%', alignSelf: 'center', paddingLeft: 5, paddingRight: 5, paddingInline: 5, overflow: 'hidden' }}>
                             <Typography variant="h5" gutterBottom>
-                                Students List:
+                                Liste des etudiants:
                             </Typography>
 
                             {Array.isArray(sclassStudents) && sclassStudents.length > 0 &&
