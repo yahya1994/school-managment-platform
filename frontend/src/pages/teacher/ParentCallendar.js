@@ -181,90 +181,22 @@ const ParentCallendar = () => {
                 selectable={false}
                 selectMirror={false}
                 dayMaxEvents={false}
+                even
                 weekends={weekendsVisible}
-                initialEvents={[
+                events={[
                   {
-                    id: nanoid(),
-                    title: "MATH",
-                    start: "2024-05-18 13:00:01",
-                    end: "2024-05-18 15:00:01",
-                    backgroundColor: "#86C8BC",
-                    borderColor: "#86C8BC"
-
-                  },
-                  {
-                    id: nanoid(),
-                    title: "PHYSIQUE ",
-                    start: "2024-05-18 09:00:01",
-                    end: "2024-05-18 11:00:01",
-                    backgroundColor: "#71e08b",
-                    borderColor: "#71e08b"
-                  }, {
-                    id: nanoid(),
-                    title: "CCI",
-                    start: "2024-05-18 16:00:01",
-                    end: "2024-05-18 17:00:01",
-                    backgroundColor: "#71e08b",
-                    borderColor: "#71e08b"
-                  },
-                  {
-                    id: nanoid(),
-                    title: "ECII",
-                    start: "2024-05-18 21:00:01",
-                    end: "2024-05-18 22:00:01",
-                    backgroundColor: "#86C8BC",
-                    borderColor: "#86C8BC"
-                  },
-                  {
-                    id: nanoid(),
-                    title: "MATH",
-                    start: "2024-05-16 13:00:01",
-                    end: "2024-05-16 15:00:01",
-                    backgroundColor: "#71e08b",
-                    borderColor: "#71e08b"
-                  },
-                  {
-                    id: nanoid(),
-                    title: "PHYSIQUE ",
-                    start: "2024-05-16 09:00:01",
-                    end: "2024-05-16 11:00:01",
-                  }, {
-                    id: nanoid(),
-                    title: "CCI",
-                    start: "2024-05-16 16:00:01",
-                    end: "2024-05-16 17:00:01",
-
-                  },
-                  {
-                    id: nanoid(),
-                    title: "ECII",
-                    start: "2024-05-16 21:00:01",
-                    end: "2024-05-16 22:00:01",
-                  },
-                  {
-                    id: nanoid(),
-                    title: "MATH",
-                    start: "2024-06-04 13:00:01",
-                    end: "2024-06-04 15:00:01",
-
-                  },
-                  {
-                    id: nanoid(),
-                    title: "PHYSIQUE ",
-                    start: "2024-06-04 09:00:01",
-                    end: "2024-06-04 11:00:01",
-                  }, {
-                    id: nanoid(),
-                    title: "CCI",
-                    start: "2024-06-04 16:00:01",
-                    end: "2024-06-04 17:00:01",
-
-                  },
-                  {
-                    id: nanoid(),
-                    title: "ECII",
-                    start: "2024-06-04 21:00:01",
-                    end: "2024-06-04 22:00:01",
+                    id: 'recurring-event',
+                    title: 'PHYSIQUE',
+                    start: '2024-05-18T09:00:01',
+                    end: '2024-05-18T11:00:01',
+                    backgroundColor: '#71e08b',
+                    borderColor: '#71e08b',
+                    rrule: {
+                      freq: 'weekly',
+                      byweekday: ['sa'], // 'mo' for Monday, 'tu' for Tuesday, etc. Adjust as needed
+                      dtstart: '2024-05-18T09:00:01',
+                      until: '2024-12-31T23:59:59', // Optional end date for the recurrence
+                    },
                   },
                 ]}
                 // select={handleDateSelect}
