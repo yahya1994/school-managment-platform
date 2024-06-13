@@ -78,7 +78,7 @@ const TeacherViewStudent = () => {
                         </span>
 
 
-                        Ecole {studentSchool.schoolName}
+                        Ecoles {studentSchool.schoolName}
                         <br /><br />
                     </Card>
                     <div style={{ height: 20 }}></div>
