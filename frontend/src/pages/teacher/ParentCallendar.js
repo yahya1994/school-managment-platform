@@ -169,7 +169,7 @@ const ParentCallendar = () => {
                 }}
                 buttonText={{
                   today: "Aujourd'hui",
-                  month: "moins",
+                  month: "mois",
                   week: "semaine",
                   day: "jour",
                   list: "list"

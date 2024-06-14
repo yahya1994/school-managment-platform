@@ -113,14 +113,14 @@ const AddStudent = ({ situation }) => {
                         </>
                     }
 
-                    <label>Roll Number</label>
-                    <input className="registerInput" type="number" placeholder="Enter student's Roll Number..."
+                    <label>numéro d'inscription</label>
+                    <input className="registerInput" type="number" placeholder="Entrer votre numéro d'inscription..."
                         value={rollNum}
                         onChange={(event) => setRollNum(event.target.value)}
                         required />
 
                     <label>Password</label>
-                    <input className="registerInput" type="password" placeholder="Enter student's password..."
+                    <input className="registerInput" type="password" placeholder="Entrer mot de passe..."
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
                         autoComplete="new-password" required />

@@ -35,7 +35,21 @@ const SubjectForm = () => {
         newSubjects[index].subCode = event.target.value;
         setSubjects(newSubjects);
     };
-
+    const handleSubjectStartTimeChange = (index) => (event) => {
+        const newSubjects = [...subjects];
+        newSubjects[index].startTime = event.target.value;
+        setSubjects(newSubjects);
+    };
+    const handleSubjectStartDateChange = (index) => (event) => {
+        const newSubjects = [...subjects];
+        newSubjects[index].startdate = event.target.value;
+        setSubjects(newSubjects);
+    };
+    const handleSubjectDurationChange = (index) => (event) => {
+        const newSubjects = [...subjects];
+        newSubjects[index].duration = event.target.value;
+        setSubjects(newSubjects);
+    };
     const handleSessionsChange = (index) => (event) => {
         const newSubjects = [...subjects];
         newSubjects[index].sessions = event.target.value || 0;
@@ -58,6 +72,9 @@ const SubjectForm = () => {
             subName: subject.subName,
             subCode: subject.subCode,
             sessions: subject.sessions,
+            startdate: subject.startdate,
+            startTime: subject.startTime,
+            duration: subject.duration,
         })),
         adminID,
     };
@@ -89,7 +106,7 @@ const SubjectForm = () => {
     return (
         <form onSubmit={submitHandler}>
             <Box mb={2}>
-                <Typography variant="h6" >Add Subjects</Typography>
+                <Typography variant="h6" >Ajouter matiere</Typography>
             </Box>
             <Grid container spacing={2}>
                 {subjects.map((subject, index) => (
@@ -97,7 +114,7 @@ const SubjectForm = () => {
                         <Grid item xs={6}>
                             <TextField
                                 fullWidth
-                                label="Subject Name"
+                                label="matiere"
                                 variant="outlined"
                                 value={subject.subName}
                                 onChange={handleSubjectNameChange(index)}
@@ -108,7 +125,7 @@ const SubjectForm = () => {
                         <Grid item xs={4}>
                             <TextField
                                 fullWidth
-                                label="Subject Code"
+                                label="code matiere"
                                 variant="outlined"
                                 value={subject.subCode}
                                 onChange={handleSubjectCodeChange(index)}
@@ -125,6 +142,33 @@ const SubjectForm = () => {
                                 inputProps={{ min: 0 }}
                                 value={subject.sessions}
                                 onChange={handleSessionsChange(index)}
+                                sx={styles.inputField}
+                                required
+                            />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <TextField
+                                type='date'
+                                value={subject.startdate}
+                                onChange={handleSubjectStartDateChange(index)}
+                                sx={styles.inputField}
+                                required
+                            />
+
+                            <TextField
+                                type='time'
+                                value={subject.startTime}
+                                onChange={handleSubjectStartTimeChange(index)}
+                                sx={styles.inputField}
+                                required
+                            />
+                        </Grid>
+                        <Grid item xs={4}>
+
+                            <TextField
+                                type='number'
+                                value={subject.duration}
+                                onChange={handleSubjectDurationChange(index)}
                                 sx={styles.inputField}
                                 required
                             />

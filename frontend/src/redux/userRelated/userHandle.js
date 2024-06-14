@@ -108,6 +108,7 @@ export const updateUser = (fields, id, address) => async (dispatch) => {
 }
 
 export const addStuff = (fields, address) => async (dispatch) => {
+    console.log('field', fields)
     dispatch(authRequest());
 
     try {

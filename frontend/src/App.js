@@ -23,11 +23,11 @@ const App = () => {
   return (
     <>   <style jsx global>{`
     .MuiSvgIcon-root {
-      color: ${currentRole === 'Teacher' ? "#ac4a76" : currentRole === 'Student' ? '#357b52' : '#173c60'} !important;
+      color: ${currentRole === 'Teacher' ? "#ac4a76" : currentRole === 'Student' ? '#357b52' : currentRole === 'Parent' ? '#7b1266' : '#173c60'} !important;
     }
     .fc .fc-button-primary {
-      background-color:  ${currentRole === 'Teacher' ? "#ac4a76" : currentRole === 'Student' ? '#357b52' : '#173c60'} !important;;
-      border-color:  ${currentRole === 'Teacher' ? "#ac4a76" : currentRole === 'Student' ? '#357b52' : '#173c60'} !important;
+      background-color:  ${currentRole === 'Teacher' ? "#ac4a76" : currentRole === 'Student' ? '#357b52' : currentRole === 'Parent' ? '#7b1266' : '#173c60'} !important;;
+      border-color:  ${currentRole === 'Teacher' ? "#ac4a76" : currentRole === 'Student' ? '#357b52' : currentRole === 'Parent' ? '#7b1266' : '#173c60'} !important;
       color: var(--fc-button-text-color);
   }
   `}</style>

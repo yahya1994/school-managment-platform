@@ -342,9 +342,9 @@ const ViewStudent = () => {
     const StudentDetailsSection = () => {
         return (
             <div>
-                Name: {userDetails.name}
+                Nom: {userDetails.name}
                 <br />
-                Roll Number: {userDetails.rollNum}
+                numéro d'inscription: {userDetails.rollNum}
                 <br />
                 Class: {sclassName.sclassName}
                 <br />
@@ -355,7 +355,7 @@ const ViewStudent = () => {
                     )
                 }
                 <Button variant="contained" sx={styles.styledButton} onClick={deleteHandler}>
-                    Delete
+                    Supprimer
                 </Button>
                 <br />
                 {/* <Button variant="contained" sx={styles.styledButton} className="show-tab" onClick={() => { setShowTab(!showTab) }}>

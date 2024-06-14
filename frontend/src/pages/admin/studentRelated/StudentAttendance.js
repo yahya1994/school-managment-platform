@@ -112,11 +112,11 @@ const StudentAttendance = ({ situation }) => {
                         >
                             <Stack spacing={1} sx={{ mb: 3 }}>
                                 <Typography variant="h4">
-                                    Student Name: {userDetails.name}
+                                    Nom etudiant: {userDetails.name}
                                 </Typography>
                                 {currentUser?.teachSubject &&
                                     <Typography variant="h4">
-                                        Subject Name: {currentUser?.teachSubject?.subName}
+                                        matiere: {currentUser?.teachSubject?.subName}
                                     </Typography>
                                 }
                             </Stack>
@@ -141,7 +141,7 @@ const StudentAttendance = ({ situation }) => {
                                                     ))
                                                     :
                                                     <MenuItem value="Select Subject">
-                                                       Ajouter des sujets de participation
+                                                        Ajouter des sujets de participation
                                                     </MenuItem>
                                                 }
                                             </Select>

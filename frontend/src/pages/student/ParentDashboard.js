@@ -10,7 +10,6 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import StudentSideBar from './StudentSideBar';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import StudentHomePage from './StudentHomePage';
 import StudentProfile from './StudentProfile';
@@ -22,6 +21,7 @@ import AccountMenu from '../../components/AccountMenu';
 import { AppBar, Drawer } from '../../components/styles';
 import ParentSideBar from './ParentSideBar';
 import StudentCallendar from '../teacher/StudentCallendar';
+import ViewStudentRStudent from '../admin/studentRelated/ViewStudentRStudent';
 
 const ParentDashboard = () => {
     const [open, setOpen] = useState(true);
@@ -33,7 +33,7 @@ const ParentDashboard = () => {
         <>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar open={open} backgroundColor="linear-gradient(54deg, #357b52, #124326)" position='absolute'>
+                <AppBar open={open} backgroundColor="linear-gradient(54deg, #7b1266, #7b1236)" position='absolute'>
                     <Toolbar sx={{ pr: '24px' }}>
                         <IconButton
                             edge="start"
@@ -55,7 +55,7 @@ const ParentDashboard = () => {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Dashboard parent
+                            Espace parent
                         </Typography>
                         <AccountMenu />
                     </Toolbar>
@@ -79,6 +79,7 @@ const ParentDashboard = () => {
                         <Route path='*' element={<Navigate to="/" />} />
                         <Route path="/Student/dashboard" element={<StudentHomePage />} />
                         <Route path="/Student/profile" element={<StudentProfile />} />
+                        <Route path="/Student/students/student/:id" element={<ViewStudentRStudent />} />
 
                         <Route path="/Student/subjects" element={<StudentSubjects />} />
                         <Route path="/Student/attendance" element={<ViewStdAttendance />} />

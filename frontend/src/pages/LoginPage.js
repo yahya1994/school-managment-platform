@@ -39,12 +39,12 @@ const LoginPage = ({ role }) => {
             const password = event.target.password.value;
 
             if (!studentName || !password) {
-                // if (!rollNum) setRollNumberError(true);
+                if (!rollNum) setRollNumberError(true);
                 if (!studentName) setStudentNameError(true);
                 if (!password) setPasswordError(true);
                 return;
             }
-            const fields = { rollNum: 3, studentName, password }
+            const fields = { rollNum , studentName, password }
             setLoader(true)
             dispatch(loginUser(fields, role))
         }
@@ -133,7 +133,7 @@ const LoginPage = ({ role }) => {
                                         required
                                         fullWidth
                                         id="rollNumber"
-                                        label="Enter your Roll Number"
+                                        label="votre numero d'inscription"
                                         name="rollNumber"
                                         autoComplete="off"
                                         type="number"

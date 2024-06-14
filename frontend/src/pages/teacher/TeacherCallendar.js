@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -16,12 +17,16 @@ import {
 } from "@mui/material";
 // import Select from "react-select";
 import DateRangePicker from "react-bootstrap-daterangepicker";
+import rrulePlugin from '@fullcalendar/rrule';
 
 import CustomModal from "./components/CustomModal";
 import events from "./events";
 import "./custom.css";
+import { useDispatch, useSelector } from "react-redux";
 // import "./styles.css";
+import { getSubjectList } from '../../redux/sclassRelated/sclassHandle';
 
+import { getUserDetails, } from '../../redux/userRelated/userHandle';
 
 const TeacherCallendar = () => {
   let todayStr = new Date().toISOString().replace(/T.*$/, "");
@@ -139,7 +144,55 @@ const TeacherCallendar = () => {
   const onFilter = (element) => {
     console.log(element.value);
   };
+  const [events, setEvents] = useState([]);
+  const dispatch = useDispatch();
 
+  const { subjectsList, sclassDetails } = useSelector((state) => state.sclass);
+  const { userDetails, currentUser, loading, response, error } = useSelector((state) => state.user);
+  useEffect(() => {
+
+    dispatch(getSubjectList(currentUser?.teachSclass?._id, "ClassSubjects"));
+    console.log('subjectsList, sclassDetails ', subjectsList, sclassDetails)
+    if (subjectsList, sclassDetails) {
+
+      const events = transformApiDataToEvents(subjectsList);
+      console.log('eventsss', events)
+      setEvents(events);
+    }
+  }, [dispatch, currentUser?.sclassName?._id]);
+
+  useEffect(() => {
+    dispatch(getUserDetails(currentUser?._id, "Student"));
+    console.log('subjectsList, sclassDetails ', subjectsList, sclassDetails)
+    if (subjectsList, sclassDetails) {
+
+      const events = transformApiDataToEvents(subjectsList);
+      console.log('events', events)
+      setEvents(events);
+    }
+
+  }, [dispatch, subjectsList, sclassDetails, currentUser?._id])
+
+  const transformApiDataToEvents = (apiData) => {
+    return apiData.map((item) => {
+      const startDate = new Date(item.createdAt);
+
+      return {
+        id: nanoid(),
+        title: item.subName.toUpperCase(),
+        start: startDate.toISOString(),
+        end: new Date(startDate.getTime() + 3 * 60 * 60 * 1000).toISOString(), // Assuming 2-hour duration
+        backgroundColor: "#71e08b",
+        borderColor: "#71e08b",
+        rrule: {
+          freq: 'weekly',
+          byweekday: ['sa'],
+          dtstart: startDate.toISOString(),
+          until: '2024-12-31T23:59:59',
+        },
+      };
+    });
+  };
   return (
     <div className="App">
       {/* <Typography variant="h4">Agenda</Typography> */}
@@ -161,7 +214,7 @@ const TeacherCallendar = () => {
             <Grid item md={12}>
               <FullCalendar
                 ref={calendarRef}
-                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                plugins={[dayGridPlugin, timeGridPlugin, rrulePlugin, interactionPlugin]}
                 headerToolbar={{
                   left: "prev,today,next",
                   center: "title",
@@ -169,7 +222,7 @@ const TeacherCallendar = () => {
                 }}
                 buttonText={{
                   today: "Aujourd'hui",
-                  month: "moins",
+                  month: "mois",
                   week: "semaine",
                   day: "jour",
                   list: "list"
@@ -182,91 +235,8 @@ const TeacherCallendar = () => {
                 selectMirror={true}
                 dayMaxEvents={true}
                 weekends={weekendsVisible}
-                initialEvents={[
-                  {
-                    id: nanoid(),
-                    title: "MATH",
-                    start: "2024-05-18 13:00:01",
-                    end: "2024-05-18 15:00:01",
-                    backgroundColor: "#86C8BC",
-                    borderColor: "#86C8BC"
-
-                  },
-                  {
-                    id: nanoid(),
-                    title: "PHYSIQUE ",
-                    start: "2024-05-18 09:00:01",
-                    end: "2024-05-18 11:00:01",
-                    backgroundColor: "#71e08b",
-                    borderColor: "#71e08b"
-                  }, {
-                    id: nanoid(),
-                    title: "CCI",
-                    start: "2024-05-18 16:00:01",
-                    end: "2024-05-18 17:00:01",
-                    backgroundColor: "#71e08b",
-                    borderColor: "#71e08b"
-                  },
-                  {
-                    id: nanoid(),
-                    title: "ECII",
-                    start: "2024-05-18 21:00:01",
-                    end: "2024-05-18 22:00:01",
-                    backgroundColor: "#86C8BC",
-                    borderColor: "#86C8BC"
-                  },
-                  {
-                    id: nanoid(),
-                    title: "MATH",
-                    start: "2024-05-16 13:00:01",
-                    end: "2024-05-16 15:00:01",
-                    backgroundColor: "#71e08b",
-                    borderColor: "#71e08b"
-                  },
-                  {
-                    id: nanoid(),
-                    title: "PHYSIQUE ",
-                    start: "2024-05-16 09:00:01",
-                    end: "2024-05-16 11:00:01",
-                  }, {
-                    id: nanoid(),
-                    title: "CCI",
-                    start: "2024-05-16 16:00:01",
-                    end: "2024-05-16 17:00:01",
-
-                  },
-                  {
-                    id: nanoid(),
-                    title: "ECII",
-                    start: "2024-05-16 21:00:01",
-                    end: "2024-05-16 22:00:01",
-                  },
-                  {
-                    id: nanoid(),
-                    title: "MATH",
-                    start: "2024-06-04 13:00:01",
-                    end: "2024-06-04 15:00:01",
-
-                  },
-                  {
-                    id: nanoid(),
-                    title: "PHYSIQUE ",
-                    start: "2024-06-04 09:00:01",
-                    end: "2024-06-04 11:00:01",
-                  }, {
-                    id: nanoid(),
-                    title: "CCI",
-                    start: "2024-06-04 16:00:01",
-                    end: "2024-06-04 17:00:01",
-
-                  },
-                  {
-                    id: nanoid(),
-                    title: "ECII",
-                    start: "2024-06-04 21:00:01",
-                    end: "2024-06-04 22:00:01",
-                  },
-                ]}
+                events={events}
+                // select={handleDateSelect}
                 select={handleDateSelect}
                 eventContent={renderEventContent}
                 eventClick={() => { navigate('/Teacher/class') }}

@@ -43,8 +43,8 @@ const ViewSubject = () => {
   };
 
   const studentColumns = [
-    { id: 'rollNum', label: 'Roll No.', minWidth: 100 },
-    { id: 'name', label: 'Name', minWidth: 170 },
+    { id: 'rollNum', label: "numéro d'inscription", minWidth: 100 },
+    { id: 'name', label: 'Nom', minWidth: 170 },
   ]
 
   const studentRows = sclassStudents.map((student) => {
@@ -103,14 +103,14 @@ const ViewSubject = () => {
                 variant="contained"
                 onClick={() => navigate("/Admin/class/addstudents/" + classID)}
               >
-                Add Students
+                Ajouter etudiant
               </GreenButton>
             </Box>
           </>
         ) : (
           <>
             <Typography variant="h5" gutterBottom>
-              Liste des etudiants: 
+              Liste des etudiants:
             </Typography>
 
             {selectedSection === 'attendance' &&
@@ -147,31 +147,31 @@ const ViewSubject = () => {
     return (
       <>
         <Typography variant="h4" align="center" gutterBottom>
-          Subject Details
+          Details matiere
         </Typography>
         <Typography variant="h6" gutterBottom>
-          Subject Name : {subjectDetails && subjectDetails.subName}
+          matiere : {subjectDetails && subjectDetails.subName}
         </Typography>
         <Typography variant="h6" gutterBottom>
-          Subject Code : {subjectDetails && subjectDetails.subCode}
+          Code matiere  : {subjectDetails && subjectDetails.subCode}
         </Typography>
         <Typography variant="h6" gutterBottom>
-          Subject Sessions : {subjectDetails && subjectDetails.sessions}
+          Sessions : {subjectDetails && subjectDetails.sessions}
         </Typography>
         <Typography variant="h6" gutterBottom>
-          Number of Students: {numberOfStudents}
+          nombre des etudiants: {numberOfStudents}
         </Typography>
         <Typography variant="h6" gutterBottom>
-          Class Name : {subjectDetails && subjectDetails.sclassName && subjectDetails.sclassName.sclassName}
+          Class  : {subjectDetails && subjectDetails.sclassName && subjectDetails.sclassName.sclassName}
         </Typography>
         {subjectDetails && subjectDetails.teacher ?
           <Typography variant="h6" gutterBottom>
-            Teacher Name : {subjectDetails.teacher.name}
+            Nom d'enseignant : {subjectDetails.teacher.name}
           </Typography>
           :
           <GreenButton variant="contained"
             onClick={() => navigate("/Admin/teachers/addteacher/" + subjectDetails._id)}>
-            Add Subject Teacher
+            affecter matiere
           </GreenButton>
         }
       </>
@@ -189,7 +189,7 @@ const ViewSubject = () => {
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList onChange={handleChange} sx={{ position: 'fixed', width: '100%', bgcolor: 'background.paper', zIndex: 1 }}>
                   <Tab label="Details" value="1" />
-                  <Tab label="Students" value="2" />
+                  <Tab label="Etudiants" value="2" />
                 </TabList>
               </Box>
               <Container sx={{ marginTop: "3rem", marginBottom: "4rem" }}>

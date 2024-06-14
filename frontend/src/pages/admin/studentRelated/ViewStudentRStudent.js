@@ -331,9 +331,9 @@ const ViewStudentRStudent = () => {
     const StudentDetailsSection = () => {
         return (
             <div>
-                Name: {userDetails.name}
+                Nom: {userDetails.name}
                 <br />
-                Roll Number: {userDetails.rollNum}
+                Numéro d'inscription: {userDetails.rollNum}
                 <br />
                 Class: {sclassName.sclassName}
                 <br />

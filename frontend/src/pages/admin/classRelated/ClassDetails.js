@@ -92,11 +92,11 @@ const ClassDetails = () => {
 
     const subjectActions = [
         {
-            icon: <PostAddIcon color="primary" />, name: 'Add New Subject',
+            icon: <PostAddIcon color="primary" />, name: 'Ajouter matiere',
             action: () => navigate("/Admin/addsubject/" + classID)
         },
         {
-            icon: <DeleteIcon color="error" />, name: 'Delete All Subjects',
+            icon: <DeleteIcon color="error" />, name: 'Supprimer tous les matieres',
             action: () => deleteHandler(classID, "SubjectsClass")
         }
     ];
@@ -110,14 +110,13 @@ const ClassDetails = () => {
                             variant="contained"
                             onClick={() => navigate("/Admin/addsubject/" + classID)}
                         >
-                            Add Subjects
+                            Ajouter matiere
                         </GreenButton>
                     </Box>
                     :
                     <>
                         <Typography variant="h5" gutterBottom>
-                            Subjects List:
-                        </Typography>
+                            List des matieres                        </Typography>
 
                         <TableTemplate buttonHaver={SubjectsButtonHaver} columns={subjectColumns} rows={subjectRows} />
                         <SpeedDialTemplate actions={subjectActions} />
@@ -129,7 +128,7 @@ const ClassDetails = () => {
 
     const studentColumns = [
         { id: 'name', label: 'Name', minWidth: 170 },
-        { id: 'rollNum', label: 'Roll Number', minWidth: 100 },
+        { id: 'rollNum', label: "numéro d'inscription", minWidth: 100 },
     ]
 
     const studentRows = sclassStudents.map((student) => {
@@ -206,7 +205,7 @@ const ClassDetails = () => {
     const ClassTeachersSection = () => {
         return (
             <>
-                Teachers
+                Enseignant
             </>
         )
     }
@@ -224,7 +223,7 @@ const ClassDetails = () => {
                     Class {sclassDetails && sclassDetails.sclassName}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                    Nombre des chapitres: {numberOfSubjects}
+                    Nombre des matieres: {numberOfSubjects}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                     Nombre des etudiants: {numberOfStudents}
@@ -234,7 +233,7 @@ const ClassDetails = () => {
                         variant="contained"
                         onClick={() => navigate("/Admin/class/addstudents/" + classID)}
                     >
-                        Add Students
+                        Ajouter etudiant
                     </GreenButton>
                 }
                 {response &&
@@ -242,8 +241,7 @@ const ClassDetails = () => {
                         variant="contained"
                         onClick={() => navigate("/Admin/addsubject/" + classID)}
                     >
-                        Add Subjects
-                    </GreenButton>
+                        Ajouter matiere                    </GreenButton>
                 }
             </>
         );
@@ -260,9 +258,9 @@ const ClassDetails = () => {
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                 <TabList onChange={handleChange} sx={{ position: 'fixed', width: '100%', bgcolor: 'background.paper', zIndex: 1 }}>
                                     <Tab label="Details" value="1" />
-                                    <Tab label="Subjects" value="2" />
-                                    <Tab label="Students" value="3" />
-                                    <Tab label="Teachers" value="4" />
+                                    <Tab label="Matieres" value="2" />
+                                    <Tab label="Etudiants" value="3" />
+                                    <Tab label="Enseignant" value="4" />
                                 </TabList>
                             </Box>
                             <Container sx={{ marginTop: "3rem", marginBottom: "4rem" }}>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -21,8 +21,11 @@ import rrulePlugin from '@fullcalendar/rrule';
 import CustomModal from "./components/CustomModal";
 import events from "./events";
 import "./custom.css";
+import { useDispatch, useSelector } from "react-redux";
 // import "./styles.css";
+import { getSubjectList } from '../../redux/sclassRelated/sclassHandle';
 
+import { getUserDetails, } from '../../redux/userRelated/userHandle';
 
 const StudentCallendar = () => {
   let todayStr = new Date().toISOString().replace(/T.*$/, "");
@@ -52,6 +55,33 @@ const StudentCallendar = () => {
   const handleDateClick = (arg) => {
     // Handle date click
   };
+  const dispatch = useDispatch();
+
+  const { subjectsList, sclassDetails } = useSelector((state) => state.sclass);
+  const { userDetails, currentUser, loading, response, error } = useSelector((state) => state.user);
+  useEffect(() => {
+    dispatch(getSubjectList(currentUser?.sclassName?._id, "ClassSubjects"));
+    console.log('subjectsList, sclassDetails ', subjectsList, sclassDetails)
+    if (subjectsList, sclassDetails) {
+
+      const events = transformApiDataToEvents(subjectsList);
+      console.log('eventsss', events)
+      setEvents(events);
+    }
+  }, [dispatch, currentUser?.sclassName?._id]);
+
+  useEffect(() => {
+    dispatch(getUserDetails(currentUser?._id, "Student"));
+    console.log('subjectsList, sclassDetails ', subjectsList, sclassDetails)
+    if (subjectsList, sclassDetails) {
+
+      const events = transformApiDataToEvents(subjectsList);
+      console.log('events', events)
+      setEvents(events);
+    }
+
+  }, [dispatch, subjectsList, sclassDetails, currentUser?._id])
+
 
   const handleDateSelect = (selectInfo) => {
     if (selectInfo.view.type === "timeGridWeek" || selectInfo.view.type === "timeGridDay") {
@@ -140,6 +170,28 @@ const StudentCallendar = () => {
   const onFilter = (element) => {
     console.log(element.value);
   };
+  const [events, setEvents] = useState([]);
+
+  const transformApiDataToEvents = (apiData) => {
+    return apiData.map((item) => {
+      const startDate = new Date(item.createdAt);
+     
+      return {
+        id: nanoid(),
+        title: item.subName.toUpperCase(),
+        start: startDate.toISOString(),
+        end: new Date(startDate.getTime() + 3 * 60 * 60 * 1000).toISOString(), // Assuming 2-hour duration
+        backgroundColor: "#71e08b",
+        borderColor: "#71e08b",
+        rrule: {
+          freq: 'weekly',
+          byweekday: ['sa'],
+          dtstart: startDate.toISOString(),
+          until: '2024-12-31T23:59:59',
+        },
+      };
+    });
+  };
 
   return (
     <div className="App">
@@ -162,7 +214,7 @@ const StudentCallendar = () => {
             <Grid item md={12}>
               <FullCalendar
                 ref={calendarRef}
-                plugins={[dayGridPlugin, timeGridPlugin,rrulePlugin, interactionPlugin]}
+                plugins={[dayGridPlugin, timeGridPlugin, rrulePlugin, interactionPlugin]}
                 headerToolbar={{
                   left: "prev,today,next",
                   center: "title",
@@ -170,7 +222,7 @@ const StudentCallendar = () => {
                 }}
                 buttonText={{
                   today: "Aujourd'hui",
-                  month: "moins",
+                  month: "mois",
                   week: "semaine",
                   day: "jour",
                   list: "list"
@@ -183,22 +235,7 @@ const StudentCallendar = () => {
                 selectMirror={false}
                 dayMaxEvents={false}
                 weekends={weekendsVisible}
-                events={[
-                  {
-                    id: 'recurring-event',
-                    title: 'PHYSIQUE',
-                    start: '2024-05-18T09:00:01',
-                    end: '2024-05-18T11:00:01',
-                    backgroundColor: '#71e08b',
-                    borderColor: '#71e08b',
-                    rrule: {
-                      freq: 'weekly',
-                      byweekday: ['mo'], // 'mo' for Monday, 'tu' for Tuesday, etc. Adjust as needed
-                      dtstart: '2024-05-18T09:00:01',
-                      until: '2024-12-31T23:59:59', // Optional end date for the recurrence
-                    },
-                  },
-                ]}
+                events={events}
               // select={handleDateSelect}
               // eventContent={renderEventContent}
               // eventClick={() => { navigate('/Teacher/class') }}

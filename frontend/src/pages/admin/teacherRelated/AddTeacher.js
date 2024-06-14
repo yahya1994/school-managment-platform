@@ -63,15 +63,15 @@ const AddTeacher = () => {
     <div>
       <div className="register">
         <form className="registerForm" onSubmit={submitHandler}>
-          <span className="registerTitle">Add Teacher</span>
+          <span className="registerTitle">Ajouter enseignant</span>
           <br />
           <label>
-            Subject : {subjectDetails && subjectDetails.subName}
+            Matiere : {subjectDetails && subjectDetails.subName}
           </label>
           <label>
-            Class : {subjectDetails && subjectDetails.sclassName && subjectDetails.sclassName.sclassName}
+            Classe : {subjectDetails && subjectDetails.sclassName && subjectDetails.sclassName.sclassName}
           </label>
-          <label>Name</label>
+          <label>Nom</label>
           <input className="registerInput" type="text" placeholder="Enter teacher's name..."
             value={name}
             onChange={(event) => setName(event.target.value)}
@@ -83,7 +83,7 @@ const AddTeacher = () => {
             onChange={(event) => setEmail(event.target.value)}
             autoComplete="email" required />
 
-          <label>Password</label>
+          <label>Mot de passe</label>
           <input className="registerInput" type="password" placeholder="Enter teacher's password..."
             value={password}
             onChange={(event) => setPassword(event.target.value)}
