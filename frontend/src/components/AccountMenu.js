@@ -15,8 +15,12 @@ const AccountMenu = () => {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
+        localStorage.removeItem('user');
+ 
         dispatch(authLogout());
-        navigate('/');
+        setTimeout(() => {
+            navigate('/');
+        }, 1000); // Adjust the delay (in milliseconds) as needed
     };
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -62,12 +66,12 @@ const AccountMenu = () => {
                     </Link>
                 </MenuItem>
                 <Divider />
-   
+
                 <MenuItem>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
-                    <Link onClick={handleLogout }>
+                    <Link onClick={handleLogout}>
                         Logout
                     </Link>
                 </MenuItem>

@@ -155,7 +155,7 @@ const TeacherCallendar = () => {
     console.log('subjectsList, sclassDetails ', subjectsList, sclassDetails)
     if (subjectsList, sclassDetails) {
 
-      const events = transformApiDataToEvents(subjectsList);
+      const events = calendarDataMapper(subjectsList);
       console.log('eventsss', events)
       setEvents(events);
     }
@@ -166,14 +166,14 @@ const TeacherCallendar = () => {
     console.log('subjectsList, sclassDetails ', subjectsList, sclassDetails)
     if (subjectsList, sclassDetails) {
 
-      const events = transformApiDataToEvents(subjectsList);
+      const events = calendarDataMapper(subjectsList);
       console.log('events', events)
       setEvents(events);
     }
 
   }, [dispatch, subjectsList, sclassDetails, currentUser?._id])
 
-  const transformApiDataToEvents = (apiData) => {
+  const calendarDataMapper = (apiData) => {
     return apiData.map((item) => {
       const startDate = new Date(item.createdAt);
 
