@@ -21,12 +21,12 @@ const ParentSideBar = () => {
                     </ListItemIcon>
                     <ListItemText primary="Accueil" />
                 </ListItemButton>
-                <ListItemButton component={Link} to="/Student/subjects">
+                {/* <ListItemButton component={Link} to="/Student/subjects">
                     <ListItemIcon>
                         <AssignmentIcon color={location.pathname.startsWith("/Student/subjects") ? 'primary' : 'inherit'} />
                     </ListItemIcon>
                     <ListItemText primary="Matières" />
-                </ListItemButton>
+                </ListItemButton> */}
                 <ListItemButton component={Link} to="/Student/callendar">
                     <ListItemIcon>
                         <ClassOutlinedIcon color={location.pathname.startsWith("/Student/attendance") ? 'primary' : 'inherit'} />

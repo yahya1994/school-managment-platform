@@ -70,7 +70,7 @@ const ChooseUser = ({ visitor }) => {
         dispatch(loginUser(fields, user))
       }
       else {
-        navigate('/Studentlogin');
+        navigate('/Parentlogin');
       }
     }
   }

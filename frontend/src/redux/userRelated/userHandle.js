@@ -15,12 +15,15 @@ import {
 
 export const loginUser = (fields, role) => async (dispatch) => {
     dispatch(authRequest());
-
+    var endPoint = `${role}Login`;
+    if (role == 'Parent') { endPoint = 'StudentLogin' }
     try {
-        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/${role}Login`, fields, {
+        const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/${endPoint}`, fields, {
             headers: { 'Content-Type': 'application/json' },
         });
         if (result.data.role) {
+            if (result.data.role == 'Student' && role == 'Parent') { result.data.role = 'Parent' }
+
             dispatch(authSuccess(result.data));
         } else {
             dispatch(authFailed(result.data.message));

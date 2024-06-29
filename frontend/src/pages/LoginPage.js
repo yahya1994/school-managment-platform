@@ -33,7 +33,7 @@ const LoginPage = ({ role }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (role === "Student") {
+        if (role === "Student" || role === "Parent") {
             const rollNum = event.target.rollNumber.value;
             const studentName = event.target.studentName.value;
             const password = event.target.password.value;
@@ -126,7 +126,7 @@ const LoginPage = ({ role }) => {
                             Content de vous revoir ! Veuillez saisir vos informations.
                         </Typography>
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
-                            {role === "Student" ? (
+                            {role === "Student" || role == 'Parent' ? (
                                 <>
                                     <TextField
                                         margin="normal"
